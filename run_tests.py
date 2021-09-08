@@ -1,7 +1,7 @@
 import sys
 import os
 import nose
-import test_calculator
+import test
 
 def main() -> object:
     sys.path.insert(0, os.path.dirname(__file__))
@@ -10,4 +10,4 @@ def main() -> object:
 
 if __name__ == '__main__':
     main()
-    os.system('python test_calculator.py' )
+    os.system('python test.py' )
