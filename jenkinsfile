@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Compiling Stage'){
+            steps{
+                echo "Pipeline Started Successfully"
+                bat 'app.py'
+                echo "Compilation done successfully!"
+            }
+        }
+        stage('Testing Stage'){
+            steps{
+                echo "Entered Testing Stage"
+                bat 'python test.py'
+                echo "Unit Test done successfully!"
+            }
+        }
+
+        stage('Final Confirmation'){
+                    steps{
+                        echo "Entered Confirmation Stage"
+                        bat 'python run_tests.py'
+                        echo "That is the result of testing"
+                    }
+                }
+
+       
+    }
+}
