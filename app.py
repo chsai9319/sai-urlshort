@@ -6,7 +6,6 @@ import random
 app = Flask(__name__)
 
 
-db = SQLAlchemy(app)
 
 @app.before_first_request
 def create_tables():
