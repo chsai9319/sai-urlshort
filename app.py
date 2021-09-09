@@ -7,8 +7,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///url.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
 db = SQLAlchemy(app)
+
 @app.before_first_request
 def create_tables():
     db.create_all()
@@ -45,7 +45,7 @@ def home():
             new_url = Urls(url_received, short_url)
             db.session.add(new_url)
             db.session.commit()
-            return short_url
+            return redirect(url_for("display_short_url", url=found_url.short))
     else:
         return render_template('home.html')
 def shorten_url():
@@ -60,4 +60,4 @@ def shorten_url():
 def display_short_url(url):
     return render_template('shorturl.html', short_url_display=url)
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=4000, debug=True)
