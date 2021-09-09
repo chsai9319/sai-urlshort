@@ -7,7 +7,7 @@ pipeline {
             steps{
                 echo "Pipeline Started Successfully"
                 bat 'python app.py'
-                bat 'CTRL+C'
+                bat 'app.Shutdown()'
                 echo "Compilation done successfully!"
             }
         }
