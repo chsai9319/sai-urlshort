@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE  5000
 #define command to start container
-CMD ["python"]
+CMD ["python","app.py"]
