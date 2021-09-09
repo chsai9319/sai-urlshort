@@ -45,7 +45,7 @@ def home():
             new_url = Urls(url_received, short_url)
             db.session.add(new_url)
             db.session.commit()
-            return redirect(url_for("display_short_url", url=found_url.short))
+            return redirect(url_for("display_short_url", url=short_url))
     else:
         return render_template('home.html')
 def shorten_url():
