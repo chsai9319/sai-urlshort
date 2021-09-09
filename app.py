@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
-
+from flask_sqlalchemy import SQLAlchemy
 import string
 import random
 
 app = Flask(__name__)
 
 
-
+db = SQLAlchemy(app)
 @app.before_first_request
 def create_tables():
     db.create_all()
