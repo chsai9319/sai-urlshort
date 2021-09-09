@@ -6,7 +6,7 @@ pipeline {
         stage('Compiling Stage'){
             steps{
                 echo "Pipeline Started Successfully"
-                bat 'python app.py'
+               
                 echo "Compilation done successfully!"
             }
         }
