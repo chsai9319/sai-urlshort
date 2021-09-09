@@ -7,7 +7,6 @@ pipeline {
             steps{
                 echo "Pipeline Started Successfully"
                 bat 'app.py'
-                bat 'exit()'
                 echo "Compilation done successfully!"
             }
         }
