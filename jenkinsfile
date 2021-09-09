@@ -6,7 +6,7 @@ pipeline {
         stage('Compiling Stage'){
             steps{
                 echo "Pipeline Started Successfully"
-                build 'sai-urlshort.git'
+                
                 echo "Compilation done successfully!"
             }
         }
