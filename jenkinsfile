@@ -7,7 +7,6 @@ pipeline {
             steps{
                 echo "Pipeline Started Successfully"
                 bat 'python app.py'
-                bat 'kill -INT 888'
                 echo "Compilation done successfully!"
             }
         }
