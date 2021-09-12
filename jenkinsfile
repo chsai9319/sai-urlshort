@@ -39,7 +39,7 @@ pipeline {
         stage('Running Docker Image'){
                     steps{
                         echo "Runningg Docker Image"
-                        bat 'docker push localhost:5000/urlshort'
+                        bat 'docker push localhost:5000/chsai9319'
                         bat 'docker image remove urlshort'
                         bat 'docker image remove localhost:5000/urlshort'
                         bat 'docker pull localhost:5000/urlshort'
