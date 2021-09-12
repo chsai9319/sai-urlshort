@@ -54,7 +54,13 @@ pipeline {
         
                     
          
-
+        stage('Running Docker Image'){
+                    steps{
+                        echo "Runningg Docker Image"
+                        bat 'docker run -p 5000:5000 -d sai-urlshort'
+                        echo "Image Ran Successfully"
+                    }
+                    }
       
         stage('Removing Untagged Images') {
                              steps {
@@ -64,13 +70,7 @@ pipeline {
                                  echo "Untagged Images Removed"
                                     }
                              }
-         stage('Running Docker Image'){
-                    steps{
-                        echo "Runningg Docker Image"
-                        bat 'docker run -p 5000:5000 -d sai-urlshort'
-                        echo "Image Ran Successfully"
-                    }
-                    }
+         
 
         stage('Terminate Stage'){
              steps{
