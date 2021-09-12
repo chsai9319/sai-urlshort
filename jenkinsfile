@@ -40,8 +40,8 @@ pipeline {
                     steps{
                         echo "Runningg Docker Image"
                         bat 'docker push localhost:5000/urlshort'
-                        docker image remove urlshort
-                        bat  'docker image remove localhost:5000/urlshort'
+                        bat 'docker image remove urlshort'
+                        bat 'docker image remove localhost:5000/urlshort'
                         bat 'docker pull localhost:5000/urlshort'
                         bat 'docker run -p 5000:5000 -d urlshort'
                         echo "Image Ran Successfully"
