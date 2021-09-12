@@ -49,6 +49,7 @@ pipeline {
                         bat 'docker run -p 5000:5000 -d urlshort'
                         echo "Image Ran Successfully"
                     }
+                    }
 
        stage ('Login to docker hub'){
             steps{
