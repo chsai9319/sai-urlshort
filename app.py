@@ -38,7 +38,6 @@ def home():
 
         if found_url:
             return redirect(url_for("display_short_url", url=found_url.short))
-            print("invalid")
         else:
             short_url = shorten_url()
             print(short_url)
