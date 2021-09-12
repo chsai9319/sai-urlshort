@@ -60,7 +60,7 @@ pipeline {
 
         stage ('Push to docker hub'){
                     steps{
-                        bat 'docker tag calculator_flask:latest amardeep51/calculator_flask:myfirstimage'
+                        bat 'docker tag sai-urlshort:latest chsai9319/sai-urlshort:myfirstimage'
                         bat 'docker push chsai9319/sai-urlshort:myfirstimage'
                         echo "Image pushed successfully"
                     }
