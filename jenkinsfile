@@ -1,11 +1,7 @@
 pipeline {
     agent any
     
-    environment{
-    dockerimage=''
-    registry="chsai9319/sai-urlshort"
-    registryCredential='dockerid'
-    }
+    
     stages {
     
         stage('Compiling Stage'){
@@ -39,14 +35,7 @@ pipeline {
             }
         }
         
-        stage('Stop previous containers') {
-                     steps {
-                         echo "Stopping Previous Containers"
-                         powershell 'docker stop $(docker ps -a -q)'
-                         powershell 'docker rm $(docker ps -q -f status=exited)'
-                         echo "Previous Containers Stopped"
-                           }
-                     }
+        
         stage('Running Docker Image'){
                     steps{
                         echo "Runningg Docker Image"
@@ -54,27 +43,7 @@ pipeline {
                         echo "Image Ran Successfully"
                     }
                     }
-         stage ('Push to docker hub'){
-                    steps{
-                        bat 'docker tag urlshort:latest chsai9319/sai-urlshort:myfirstimage'
-                        bat 'docker push chsai9319/sai-urlshort:myfirstimage'
-                        echo "Image pushed successfully"
-                    }
-                }
-
-      
-        stage('Removing Untagged Images') {
-                             steps {
-                                 echo "Removing Untagged Images"
-                                 powershell 'docker images -f "dangling=true"'
-                                 powershell 'docker rmi $(docker images -f "dangling=true" -q) --force'
-                                 echo "Untagged Images Removed"
-                                    }
-                             }
-
-        stage('Terminate Stage'){
-             steps{
-                echo "Pipeline Terminated successfully!"
+         
     }
     }
 }
