@@ -1,8 +1,13 @@
 pipeline {
     agent any
-
+    
+    environment{
+    dockerimage=''
+    registry="chsai9319/sai-urlshort"
+    registryCredential='dockerid'
+    }
     stages {
-
+    
         stage('Compiling Stage'){
             steps{
                 echo "Pipeline Started Successfully"
@@ -44,7 +49,15 @@ pipeline {
                     }
 
       
-   
+        stage("pushing image"){
+        steps{
+        script{
+        docker.withRegistry('',registryCredential){
+        dockerImage.push()
+        }
+        }
+        }
+        }
         
 
         stage('Terminate Stage'){
