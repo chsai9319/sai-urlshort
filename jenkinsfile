@@ -47,13 +47,8 @@ pipeline {
                          echo "Previous Containers Stopped"
                            }
                      }
-        stage('Running Docker Image'){
-                    steps{
-                        echo "Runningg Docker Image"
-                        bat 'docker run -p 5000:5000 -d urlshort'
-                        echo "Image Ran Successfully"
-                    }
-                    }
+        
+                    
          stage ('Push to docker hub'){
                     steps{
                         bat 'docker tag urlshort:latest chsai9319/sai-urlshort:myfirstimage'
@@ -71,6 +66,13 @@ pipeline {
                                  echo "Untagged Images Removed"
                                     }
                              }
+                             stage('Running Docker Image'){
+                    steps{
+                        echo "Runningg Docker Image"
+                        bat 'docker run -p 5000:5000 -d urlshort'
+                        echo "Image Ran Successfully"
+                    }
+                    }
 
         stage('Terminate Stage'){
              steps{
