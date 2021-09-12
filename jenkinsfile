@@ -51,28 +51,7 @@ pipeline {
                     }
                     }
 
-       stage ('Login to docker hub'){
-            steps{
-                bat 'docker login -u chsai9319 -p Ammananna143'
-                echo "Logged in"
-            }
-        }
-
-        stage ('Push to docker hub'){
-                    steps{
-                        bat 'docker tag sai-urlshort:latest chsai9319/sai-urlshort:myfirstimage'
-                        bat 'docker push chsai9319/sai-urlshort:myfirstimage'
-                        echo "Image pushed successfully"
-                    }
-                }
-        stage('Removing Untagged Images') {
-                             steps {
-                                 echo "Removing Untagged Images"
-                                 powershell 'docker images -f "dangling=true"'
-                                 powershell 'docker rmi $(docker images -f "dangling=true" -q) --force'
-                                 echo "Untagged Images Removed"
-                                    }
-                             }
+      
 
 
         stage('Terminate Stage'){
