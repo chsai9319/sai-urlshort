@@ -73,7 +73,7 @@ pipeline {
          stage('Running Docker Image'){
                     steps{
                         echo "Runningg Docker Image"
-                        bat 'docker run -p 5000:5000 -d urlshort'
+                        bat 'docker run -p 5000:5000 -d sai-urlshort'
                         echo "Image Ran Successfully"
                     }
                     }
