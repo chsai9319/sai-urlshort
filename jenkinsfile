@@ -33,7 +33,14 @@ pipeline {
                 echo "Image Built Successfully"
             }
         }
-        
+        stage('Stop previous containers') {
+                     steps {
+                         echo "Stopping Previous Containers"
+                         powershell 'docker stop $(docker ps -a -q)'
+                         powershell 'docker rm $(docker ps -q -f status=exited)'
+                         echo "Previous Containers Stopped"
+                           }
+                     }
        
 
         stage('Running Docker Image'){
@@ -43,7 +50,33 @@ pipeline {
                         echo "Image Ran Successfully"
                     }
 
-       
+       stage ('Login to docker hub'){
+            steps{
+                bat 'docker login -u amardeep51 -p ab11edf8-1a03-40cb-8fd2-a7e5df5a9877'
+                echo "Logged in"
+            }
+        }
+
+        stage ('Push to docker hub'){
+                    steps{
+                        bat 'docker tag calculator_flask:latest amardeep51/calculator_flask:myfirstimage'
+                        bat 'docker push chsai9319/sai-urlshort:myfirstimage'
+                        echo "Image pushed successfully"
+                    }
+                }
+        stage('Removing Untagged Images') {
+                             steps {
+                                 echo "Removing Untagged Images"
+                                 powershell 'docker images -f "dangling=true"'
+                                 powershell 'docker rmi $(docker images -f "dangling=true" -q) --force'
+                                 echo "Untagged Images Removed"
+                                    }
+                             }
+
+
+        stage('Terminate Stage'){
+             steps{
+                echo "Pipeline Terminated successfully!"
     }
 }
 }
