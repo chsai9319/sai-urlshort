@@ -39,7 +39,14 @@ pipeline {
             }
         }
         
-
+        stage('Stop previous containers') {
+                     steps {
+                         echo "Stopping Previous Containers"
+                         powershell 'docker stop $(docker ps -a -q)'
+                         powershell 'docker rm $(docker ps -q -f status=exited)'
+                         echo "Previous Containers Stopped"
+                           }
+                     }
         stage('Running Docker Image'){
                     steps{
                         echo "Runningg Docker Image"
@@ -47,17 +54,15 @@ pipeline {
                         echo "Image Ran Successfully"
                     }
                     }
+         stage ('Push to docker hub'){
+                    steps{
+                        bat 'docker tag sai-urlshort:latest chsai9319/sai-urlshort:myfirstimage'
+                        bat 'docker push chsai9319/sai-urlshort:myfirstimage'
+                        echo "Image pushed successfully"
+                    }
+                }
 
       
-        stage("pushing image"){
-        steps{
-        script{
-        docker.withRegistry('',registryCredential){
-        dockerImage.push()
-        }
-        }
-        }
-        }
         
 
         stage('Terminate Stage'){
