@@ -45,7 +45,8 @@ def home():
             db.session.add(new_url)
             db.session.commit()
             return redirect(url_for("display_short_url", url=short_url))
-    
+    else:
+        return "<p>Hello</p>"
 def shorten_url():
     letters = string.ascii_lowercase + string.ascii_uppercase
     while True:
