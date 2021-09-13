@@ -59,4 +59,4 @@ def shorten_url():
 def display_short_url(url):
     return render_template('shorturl.html', short_url_display=url)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0')
