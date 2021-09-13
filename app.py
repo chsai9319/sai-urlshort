@@ -46,21 +46,7 @@ def home():
             db.session.commit()
             return redirect(url_for("display_short_url", url=short_url))
     else:
-        return render_template('''<html>{% extends "base.html" %}
-{% block title %}shorten URL{% endblock %}
-
-{% block content %}
-<form action="#", method="post">
-    <label for="url">Enter an https:// URL:</label>
-
-    <input type="url" name="nm" id="url"
-       placeholder="https://example.com"
-       pattern="https://.*" size="50"
-       required>
-    <br>
-    <input type="submit" value="submit" class="btn btn-primary">
-</form>
-{% endblock %}'''
+        return render_template("Templates/home.html")
 def shorten_url():
     letters = string.ascii_lowercase + string.ascii_uppercase
     while True:
