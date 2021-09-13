@@ -46,7 +46,16 @@ def home():
             db.session.commit()
             return redirect(url_for("display_short_url", url=short_url))
     else:
-        return '<h1>URL Shortener</h1>'
+        return '''<form action="#", method="post">
+    <label for="url">Enter an https:// URL:</label>
+
+    <input type="url" name="nm" id="url"
+       placeholder="https://example.com"
+       pattern="https://.*" size="50"
+       required>
+    <br>
+    <input type="submit" value="submit" class="btn btn-primary">
+</form>'''
 def shorten_url():
     letters = string.ascii_lowercase + string.ascii_uppercase
     while True:
