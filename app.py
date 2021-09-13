@@ -46,18 +46,7 @@ def home():
             db.session.commit()
             return redirect(url_for("display_short_url", url=short_url))
     else:
-        return '''<h1>URL Shortener</h1>
-<form action="#", method="post">
-    <label for="url">Enter an https:// URL:</label>
-
-    <input type="url" name="nm" id="url"
-       placeholder="https://example.com"
-       pattern="https://.*" size="50"
-       required>
-    <br>
-    <input type="submit" value="submit" class="btn btn-primary">
-</form>
-'''
+        return 'flask.render_template('home.html')
 def shorten_url():
     letters = string.ascii_lowercase + string.ascii_uppercase
     while True:
@@ -68,9 +57,6 @@ def shorten_url():
             return rand_letters
 @app.route('/display/<url>')
 def display_short_url(url):
-    return render_template('''
-    <h1>http://127.0.0.1:4000/{{short_url_display}}</h1>
-    <a href="http://127.0.0.1:4000">BACK TO HOME</a>
-<a href="http://127.0.0.1:4000/{{short_url_display}}">url</a>''', short_url_display=url)
+    return render_template('flask.render_template('shorturl.html', short_url_display=url)
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
