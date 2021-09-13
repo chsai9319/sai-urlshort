@@ -1,6 +1,6 @@
 try:
     from app import app
-    import unittest as unittest
+    import unittest
 except Exception as e:
     print("some modules are missing{}".format(e))
 
