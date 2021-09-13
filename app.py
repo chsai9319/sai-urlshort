@@ -1,10 +1,9 @@
-from flask import Flask,request,redirect,url_for
-from flask import render_template
+from flask import Flask,render_template,request,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 import string
 import random
 
-app = Flask(__name__,template_folder='templates')
+app = Flask(__name__,template_folder='../templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///url.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
