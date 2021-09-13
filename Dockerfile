@@ -6,7 +6,5 @@ WORKDIR /sai-urlshort
 COPY .  /sai-urlshort
 #installing dependencies of Flask
 RUN pip install -r requirements.txt
-
-EXPOSE  8081
 #define command to start container
 CMD ["python","app.py","--host=0.0.0.0"]
