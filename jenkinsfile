@@ -14,22 +14,7 @@ pipeline {
             }
        
         
-        stage('Testing Stage'){
-            steps{
-                echo "Entered Testing Stage"
-                bat 'python test.py'
-             
-                echo "Unit Test done successfully!"
-            }
-        }
-
-        stage('Final Confirmation'){
-                    steps{
-                        echo "Entered Confirmation Stage"
-                        bat 'python run_tests.py'
-                        echo "That is the result of testing"
-                    }
-                }
+        
            stage('Building Docker Image'){
             steps{
                 echo "Building Docker Image"
