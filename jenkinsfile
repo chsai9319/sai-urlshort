@@ -65,15 +65,7 @@ pipeline {
                                  echo "Untagged Images Removed"
                                     }
                              }
-         stage ('Push to docker hub'){
-                    steps{
-                        bat 'docker tag sai-urlshort:latest chsai9319/sai-urlshort:myfirstimage'
-                        bat 'docker push chsai9319/sai-urlshort:myfirstimage'
-                        echo "Image pushed successfully"
-                    }
-                }
-
-
+         
         stage('Terminate Stage'){
              steps{
                 echo "Pipeline Terminated successfully!"
