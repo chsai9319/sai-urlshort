@@ -46,7 +46,7 @@ def home():
             db.session.commit()
             return redirect(url_for("display_short_url", url=short_url))
     else:
-        return render_template('base.html')
+        return render_template('https://github.com/chsai9319/sai-urlshort/blob/fe7e1e6c6bcd2359caac6c00e43d9b75c9fe599e/templates/home.html')
 def shorten_url():
     letters = string.ascii_lowercase + string.ascii_uppercase
     while True:
