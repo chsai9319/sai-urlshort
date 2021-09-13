@@ -1,8 +1,7 @@
 try:
     from app import app
     import unittest as unittest
-except Exceptions as e:
-    print("some modules are missing{}".format(e))
+
 
 class Flasktest(unittest.TestCase):
     def test_index(self):
