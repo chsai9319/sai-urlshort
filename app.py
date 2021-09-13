@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import string
 import random
 
-app = Flask(__name__,template_folder='../templates')
+app = Flask(__name__,template_folder='templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///url.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -47,7 +47,7 @@ def home():
             db.session.commit()
             return redirect(url_for("display_short_url", url=short_url))
     else:
-        return flask.render_template('home.html')
+        return render_template('home.html')
 def shorten_url():
     letters = string.ascii_lowercase + string.ascii_uppercase
     while True:
@@ -58,6 +58,6 @@ def shorten_url():
             return rand_letters
 @app.route('/display/<url>')
 def display_short_url(url):
-    return flask.render_template('shorturl.html', short_url_display=url)
+    return render_template('shorturl.html', short_url_display=url)
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
