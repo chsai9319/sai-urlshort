@@ -7,4 +7,7 @@ COPY .  /sai-urlshort
 #installing dependencies of Flask
 RUN pip install -r requirements.txt
 #define command to start container
+
+
+EXPOSE 5000
 CMD ["python","app.py","--host=0.0.0.0"]
