@@ -4,7 +4,7 @@ pipeline {
     environment{
     dockerimage=''
     registry="chsai9319/sai-urlshort"
-    registryCredential='dockerid'
+    registryCredential='docker_ID'
     }
     stages {
         stage("Build"){
