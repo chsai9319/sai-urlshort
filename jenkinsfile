@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Build"){
         steps{
-        git branch: 'main', credentialsId: '2cf1742a-c06b-468d-aed9-f1aece323912', url: 'https://github.com/chsai9319/sai-urlshort.git'
+        git branch: 'main', credentialsId: '2cf1742a-c06b-468d-aed9-f1aece323912', url: 'https://github.com/chsai9319/sai-urlshort.git''
         }
         }
         stage('Testing Stage'){
@@ -64,13 +64,7 @@ pipeline {
                                  echo "Untagged Images Removed"
                                     }
                              }
-         stage ('Push to docker hub'){
-                    steps{
-                        bat 'docker tag sai-urlshort:latest chsai9319/sai-urlshort:myfirstimage'
-                        bat 'docker push chsai9319/sai-urlshort:myfirstimage'
-                        echo "Image pushed successfully"
-                    }
-                }
+        
         stage('Terminate Stage'){
              steps{
                 echo "Pipeline Terminated successfully!"
