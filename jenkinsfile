@@ -29,7 +29,7 @@ pipeline {
                     }
                 }
         
-           stage('Building Docker Image'){
+           stage(' Docker Image Building'){
             steps{
                 echo "Building Docker Image"
                 bat 'docker image build -t sai-urlshort .'
@@ -37,12 +37,12 @@ pipeline {
             }
         }
         
-        stage('Stop previous containers') {
+        stage('Stop Running containers') {
                      steps {
-                         echo "Stopping Previous Containers"
+                         echo "Stopping running and previous Containers"
                          powershell 'docker stop $(docker ps -a -q)'
                          powershell 'docker rm $(docker ps -q -f status=exited)'
-                         echo "Previous Containers Stopped"
+                         echo "Running and Previous Containers Stopped"
                            }
                      }
         
@@ -50,13 +50,13 @@ pipeline {
          
         stage('Running Docker Image'){
                     steps{
-                        echo "Runningg Docker Image"
+                        echo "Running Docker Image at port 5000"
                         bat 'docker run -p 5000:5000 -d sai-urlshort'
-                        echo "Image Ran Successfully"
+                        echo "Image Running Successfully"
                     }
                     }
       
-        stage('Removing Untagged Images') {
+        stage('Removing Untagges Images') {
                              steps {
                                  echo "Removing Untagged Images"
                                  powershell 'docker images -f "dangling=true"'
@@ -65,7 +65,7 @@ pipeline {
                                     }
                              }
         
-        stage('Terminate Stage'){
+        stage('Final Stage'){
              steps{
                 echo "Pipeline Terminated successfully!"
     }
