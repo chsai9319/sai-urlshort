@@ -46,7 +46,13 @@ pipeline {
                            }
                      }
         
-                    
+        stage ('Push to docker hub'){
+                    steps{
+                        bat 'docker tag urlshort:latest chsai9319/sai-urlshort:myfirstimage'
+                        bat 'docker push chsai9319/sai-urlshort:myfirstimage'
+                        echo "Image pushed successfully"
+                    }
+                } 
          
         stage('Running Docker Image'){
                     steps{
