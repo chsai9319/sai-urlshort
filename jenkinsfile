@@ -48,6 +48,7 @@ pipeline {
         
         stage ('Push to docker hub'){
                     steps{
+                        bat 'docker login -u chsai9319 -p cfd7f0e3-56e7-4263-92bc-76367d20f62e'
                         bat 'docker push chsai9319/sai-urlshort:latest'
                         echo "Image pushed successfully"
                     }
